@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, FormEvent } from "react";
 import * as C from "./App.styles";
+import { PhotoItem } from "./components/PhotoItem";
 import * as Photos from "./services/photo";
 import { Photo } from "./types/Photo";
 
@@ -15,13 +16,17 @@ const App = () => {
     getPhotos();
   }, []);
 
+  const handleFormUpload = (e: FormEvent) => {};
+
   return (
     <C.Container>
       <C.Area>
         <C.Header>Galeria de Fotos</C.Header>
 
-        {/* Area de upload */}
-
+        <C.UploadForm method="POST" onSubmit={handleFormUpload}>
+          <input type="file" name="image" />
+          <input type="submit" value="Enviar" />
+        </C.UploadForm>
         {loading && (
           <C.ScreenWarning>
             <div className="emoji">🤚</div>
@@ -32,7 +37,7 @@ const App = () => {
         {!loading && photos.length > 0 && (
           <C.PhotosList>
             {photos.map((item, index) => (
-              <div key={item.url}> {item.name} </div>
+              <PhotoItem key={index} name={item.name} url={item.url} />
             ))}
           </C.PhotosList>
         )}
