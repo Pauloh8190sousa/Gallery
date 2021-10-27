@@ -32,9 +32,16 @@ const App = () => {
         {!loading && photos.length > 0 && (
           <C.PhotosList>
             {photos.map((item, index) => (
-              <div>{item.name}</div>
+              <div key={item.url}> {item.name} </div>
             ))}
           </C.PhotosList>
+        )}
+
+        {!loading && photos.length === 0 && (
+          <C.ScreenWarning>
+            <div className="emoji">😔</div>
+            <div>Não há fotos cadastradas.</div>
+          </C.ScreenWarning>
         )}
       </C.Area>
     </C.Container>
