@@ -40,19 +40,37 @@ export const UploadForm = styled.form`
     padding: 15px;
     border-radius: 10px;
     margin-bottom: 30px;
+    
 
     input[type=submit] {
         background-color: #756DF4;
+        height: 43px;
+        width: 120px;
+        font-weight: bold;
         border: 0;
         color: #FFF;
         padding: 8px 16px;
-        font-size: 15px;
+        font-size: 16px;
         border-radius: 10px;
         margin: 0 20px;
         cursor: pointer;
         transition: opacity 0.3s;
+        float: right;
+        margin-top: 10px;
         &:hover {
             opacity: 0.8;
         }
     }
+
+    input[type="file"] {
+        padding: 20px 10px;
+        background-color: #333;
+        border-radius: 10px;
+        color: #FFF;
+        text-transform: uppercase;
+        text-align: center;
+        cursor: pointer;
+        margin-right: 20px;
+    }
+
 `;
